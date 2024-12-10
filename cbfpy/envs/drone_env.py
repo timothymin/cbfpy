@@ -15,7 +15,13 @@ from jax import Array
 
 # Note: the original gym_pybullet_drones repo has a lot of dependencies that are not necessary for this demo.
 # Use the fork at https://github.com/danielpmorton/gym-pybullet-drones instead
-from gym_pybullet_drones.envs.VelocityAviary import VelocityAviary
+try:
+    from gym_pybullet_drones.envs.VelocityAviary import VelocityAviary
+except ImportError as e:
+    raise ImportError(
+        "Please install the forked version of gym-pybullet-drones:"
+        + "\n'pip install 'gym_pybullet_drones @ git+https://github.com/danielpmorton/gym-pybullet-drones.git''"
+    ) from e
 
 from cbfpy.utils.visualization import visualize_3D_box
 from cbfpy.envs.base_env import BaseEnv

@@ -29,7 +29,7 @@ Repository = "https://github.com/danielpmorton/cbfpy/"
 examples = [
     "pybullet",
     "pygame",
-    "gym_pybullet_drones @ git+https://github.com/danielpmorton/gym-pybullet-drones.git",
+    # "gym_pybullet_drones @ git+https://github.com/danielpmorton/gym-pybullet-drones.git",
     "wheel",
     "matplotlib",
 ]
@@ -39,7 +39,7 @@ all = [
     "black",
     "pybullet",
     "pygame",
-    "gym_pybullet_drones @ git+https://github.com/danielpmorton/gym-pybullet-drones.git",
+    # "gym_pybullet_drones @ git+https://github.com/danielpmorton/gym-pybullet-drones.git",
     "mkdocs-material",
     "mkdocstrings[python]",
 ]
