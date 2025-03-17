@@ -8,10 +8,21 @@ CBFpy is an easy-to-use and high-performance framework for constructing and solv
 
 For API reference, see the following [documentation](https://danielpmorton.github.io/cbfpy)
 
-If you use CBFpy in your research, please use the following citation:
+If you use CBFpy in your research, please cite the following [paper](https://arxiv.org/abs/2503.06736):
 
 ```
-@software{Morton_CBFpy_2024,
+@article{morton2025oscbf,
+  author = {Morton, Daniel and Pavone, Marco},
+  title = {Safe, Task-Consistent Manipulation with Operational Space Control Barrier Functions},
+  year = {2025},
+  journal = {arXiv preprint arXiv:2503.06736},
+  note = {Submitted to IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Hangzhou, 2025},
+}
+```
+
+Or, the software itself:
+```
+@software{morton2024cbfpy,
   author = {Morton, Daniel},
   license = {MIT},
   title = {{CBFpy: Control Barrier Functions in Python and Jax}},
