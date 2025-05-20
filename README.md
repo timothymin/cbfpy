@@ -20,19 +20,6 @@ If you use CBFpy in your research, please cite the following [paper](https://arx
 }
 ```
 
-Or, the software itself:
-```
-@software{morton2024cbfpy,
-  author = {Morton, Daniel},
-  license = {MIT},
-  title = {{CBFpy: Control Barrier Functions in Python and Jax}},
-  url = {https://github.com/danielpmorton/cbfpy},
-  version = {0.0.1},
-  month = Dec,
-  year = {2024}
-}
-```
-
 ## Installation 
 
 ### From PyPI
