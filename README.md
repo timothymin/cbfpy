@@ -1,3 +1,7 @@
+<div align="center">
+<img src="https://github.com/user-attachments/assets/0304752c-cb75-4d53-b45f-b6b1a0912d9c" alt="logo"></img>
+</div>
+
 # CBFpy: Control Barrier Functions in Python and Jax
 
 CBFpy is an easy-to-use and high-performance framework for constructing and solving Control Barrier Functions (CBFs) and Control Lyapunov Functions (CLFs), using [Jax](https://github.com/google/jax) for:
