@@ -42,7 +42,8 @@ DEBUG_SAFETY_FILTER = False
 DEBUG_QP_DATA = False
 
 
-@jax.tree_util.register_static
+# @jax.tree_util.register_static
+@jax.tree_util.register_pytree_node_class
 class CBF:
     """Control Barrier Function (CBF) class.
 
@@ -106,6 +107,79 @@ class CBF:
             self.qp_solver: Callable = jax.jit(qpax.solve_qp_elastic)
         else:
             self.qp_solver: Callable = jax.jit(qpax.solve_qp)
+
+    def tree_flatten(self):
+        """Flatten the CBF object for JAX pytree registration."""
+        # Return (children, aux_data) where children are the dynamic parts and aux_data are static parts
+        children = ()  # No dynamic JAX arrays in this object
+        aux_data = (
+            self.n,
+            self.m,
+            self.num_cbf,
+            self.u_min,
+            self.u_max,
+            self.control_constrained,
+            self.relax_cbf,
+            self.cbf_relaxation_penalty,
+            self.h_1,
+            self.h_2,
+            self.f,
+            self.g,
+            self.alpha,
+            self.alpha_2,
+            self.P_config,
+            self.q_config,
+            self.solver_tol,
+            self.qp_solver,
+        )
+        return children, aux_data
+
+    @classmethod
+    def tree_unflatten(cls, aux_data, children):
+        """Reconstruct the CBF object from flattened representation."""
+        (
+            n,
+            m,
+            num_cbf,
+            u_min,
+            u_max,
+            control_constrained,
+            relax_cbf,
+            cbf_relaxation_penalty,
+            h_1,
+            h_2,
+            f,
+            g,
+            alpha,
+            alpha_2,
+            P_config,
+            q_config,
+            solver_tol,
+            qp_solver,
+        ) = aux_data
+        
+        # Create a new instance without going through __init__ validation
+        instance = cls.__new__(cls)
+        instance.n = n
+        instance.m = m
+        instance.num_cbf = num_cbf
+        instance.u_min = u_min
+        instance.u_max = u_max
+        instance.control_constrained = control_constrained
+        instance.relax_cbf = relax_cbf
+        instance.cbf_relaxation_penalty = cbf_relaxation_penalty
+        instance.h_1 = h_1
+        instance.h_2 = h_2
+        instance.f = f
+        instance.g = g
+        instance.alpha = alpha
+        instance.alpha_2 = alpha_2
+        instance.P_config = P_config
+        instance.q_config = q_config
+        instance.solver_tol = solver_tol
+        instance.qp_solver = qp_solver
+        
+        return instance
 
     @classmethod
     def from_config(cls, config: CBFConfig) -> "CBF":
